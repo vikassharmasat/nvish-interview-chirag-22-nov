@@ -51,7 +51,9 @@
                         @endcan
                     </tr>
                     @empty
-                        <p>No User Available</p>
+                    <tr>
+                        <td colspan="4">No User Available</td>
+                    </tr>
                 </tbody>
                     @endforelse
             </table>
