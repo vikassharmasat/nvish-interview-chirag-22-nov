@@ -30,6 +30,6 @@ Route::group(['prefix' => 'user'],function()
    Route::get('/logout/{id}','UserController@forceLogout')->name('force_logout')->middleware('can:force-logout');
 
    Route::get('/edit-pic','UserController@editPic')->name('edit-pic')->middleware('auth');
-   Route::post('/update-avatar','UserController@UpdateAvatar')->name('update-avatar')->middleware('can:update-user');
+   Route::post('/update-avatar','UserController@UpdateAvatar')->name('update-avatar')->middleware('auth');
 
 });
