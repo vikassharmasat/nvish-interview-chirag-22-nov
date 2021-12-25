@@ -26,18 +26,21 @@
                 <a class="navbar-brand" href="{{ url('/user/list') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                @if((Auth::check() && auth()->user()->avatar) && file_exists(public_path('storage/'.auth()->user()->avatar)))
-                    @php $avatar = asset('storage/'.auth()->user()->avatar) @endphp
-                @else
-                    @php $avatar = asset('storage/avatar/avatar.png') @endphp
-                @endif
-                <a class="navbar-brand" href="{{ url('/user/edit-pic') }}">
-                    <div class="row">
-                        <div class="col-12">
-                            <img src="{{$avatar}}" alt="Avatar" class="img-thumbnail" width="150px" height="150px">
+                @if(Auth::check())
+                    @if( auth()->user()->avatar && file_exists(public_path('storage/'.auth()->user()->avatar)))
+                        @php $avatar = asset('storage/'.auth()->user()->avatar) @endphp
+                    @else
+                        @php $avatar = asset('storage/avatar/avatar.png') @endphp
+                    @endif
+                    <a class="navbar-brand" href="{{ url('/user/edit-pic') }}">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="{{$avatar}}" alt="Avatar" class="img-thumbnail" width="150px" height="150px">
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                @endif
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
